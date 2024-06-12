@@ -172,6 +172,13 @@ func (gui *Gui) createAllViews() error {
 	gui.Views.Filter.Frame = false
 	gui.Views.Filter.Editor = gocui.EditorFunc(gui.wrapEditor(gocui.SimpleEditor))
 
+	gui.Views.Project.TitlePrefix = "[1]"
+	gui.Views.Services.TitlePrefix = "[2]"
+	gui.Views.Containers.TitlePrefix = "[3]"
+	gui.Views.Images.TitlePrefix = "[4]"
+	gui.Views.Volumes.TitlePrefix = "[5]"
+	gui.Views.Networks.TitlePrefix = "[6]"
+
 	return nil
 }
 
