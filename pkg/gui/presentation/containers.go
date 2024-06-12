@@ -19,6 +19,7 @@ func GetContainerDisplayStrings(guiConfig *config.GuiConfig, container *commands
 		getContainerDisplayStatus(guiConfig, container),
 		getContainerDisplaySubstatus(guiConfig, container),
 		container.Name,
+		fmt.Sprintf("%s ", container.ID[:8]),
 		getDisplayCPUPerc(container),
 		utils.ColoredString(displayPorts(container), color.FgYellow),
 		utils.ColoredString(displayContainerImage(container), color.FgMagenta),
