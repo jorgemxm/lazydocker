@@ -213,7 +213,7 @@ func englishSet() TranslationSet {
 		ViewRestartOptions:          "view restart options",
 		ExecShell:                   "exec shell",
 		RunCustomCommand:            "run predefined custom command",
-		ViewBulkCommands:            "view bulk commands",
+		ViewBulkCommands:            "bulk commands",
 		FilterList:                  "filter list",
 		OpenInBrowser:               "open in browser (first port is http)",
 		SortContainersByState:       "sort containers by state",

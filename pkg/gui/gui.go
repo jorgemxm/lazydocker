@@ -163,6 +163,7 @@ func (gui *Gui) renderGlobalOptions() error {
 		"← → ↑ ↓":   gui.Tr.Navigate,
 		"q":         gui.Tr.Quit,
 		"b":         gui.Tr.ViewBulkCommands,
+		"f":         gui.Tr.FilterList,
 		"x":         gui.Tr.Menu,
 	})
 }
