@@ -586,6 +586,13 @@ func (gui *Gui) GetInitialKeybindings() []*Binding {
 		if !panel.IsFilterDisabled() {
 			bindings = append(bindings, &Binding{
 				ViewName:    panel.GetView().Name(),
+				Key:         'f',
+				Modifier:    gocui.ModNone,
+				Handler:     wrappedHandler(gui.handleOpenFilter),
+				Description: gui.Tr.LcFilter,
+			})
+			bindings = append(bindings, &Binding{
+				ViewName:    panel.GetView().Name(),
 				Key:         '/',
 				Modifier:    gocui.ModNone,
 				Handler:     wrappedHandler(gui.handleOpenFilter),
