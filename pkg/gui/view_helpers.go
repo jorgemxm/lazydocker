@@ -285,6 +285,48 @@ func (gui *Gui) handleClickAux(v *gocui.View, itemCount int, selectedLine *int, 
 	return handleSelect(gui.g, v)
 }
 
+func (gui *Gui) toggleHalfScreenMode() error {
+	var prevScreenMode WindowMaximisation
+	toggledMode := SCREEN_HALF
+
+	if gui.State.ScreenMode != toggledMode {
+		prevScreenMode = gui.State.ScreenMode
+	} else {
+		prevScreenMode = gui.State.PrevScreenMode
+	}
+
+	if gui.currentViewName() == "main" {
+		gui.State.ScreenMode = prevIntInCycle([]WindowMaximisation{prevScreenMode, toggledMode}, gui.State.ScreenMode)
+
+		return nil
+	}
+
+	gui.State.ScreenMode = nextIntInCycle([]WindowMaximisation{prevScreenMode, toggledMode}, gui.State.ScreenMode)
+
+	return nil
+}
+
+func (gui *Gui) toggleFullScreenMode() error {
+	var prevScreenMode WindowMaximisation
+	toggledMode := SCREEN_FULL
+
+	if gui.State.ScreenMode != toggledMode {
+		prevScreenMode = gui.State.ScreenMode
+	} else {
+		prevScreenMode = gui.State.PrevScreenMode
+	}
+
+	if gui.currentViewName() == "main" {
+		gui.State.ScreenMode = nextIntInCycle([]WindowMaximisation{prevScreenMode, toggledMode}, gui.State.ScreenMode)
+
+		return nil
+	}
+
+	gui.State.ScreenMode = prevIntInCycle([]WindowMaximisation{prevScreenMode, toggledMode}, gui.State.ScreenMode)
+
+	return nil
+}
+
 func (gui *Gui) nextScreenMode() error {
 	if gui.currentViewName() == "main" {
 		gui.State.ScreenMode = prevIntInCycle([]WindowMaximisation{SCREEN_NORMAL, SCREEN_HALF, SCREEN_FULL}, gui.State.ScreenMode)

@@ -506,6 +506,18 @@ func (gui *Gui) GetInitialKeybindings() []*Binding {
 		},
 		{
 			ViewName:    "",
+			Key:         'º',
+			Handler:     wrappedHandler(gui.toggleHalfScreenMode),
+			Description: "Toggle between Half and Normal screen mode",
+		},
+		{
+			ViewName:    "",
+			Key:         '!',
+			Handler:     wrappedHandler(gui.toggleFullScreenMode),
+			Description: "Toggle between Full and Normal screen mode",
+		},
+		{
+			ViewName:    "",
 			Key:         '+',
 			Handler:     wrappedHandler(gui.nextScreenMode),
 			Description: gui.Tr.LcNextScreenMode,
