@@ -222,6 +222,13 @@ func (gui *Gui) GetInitialKeybindings() []*Binding {
 		},
 		{
 			ViewName:    "containers",
+			Key:         'R',
+			Modifier:    gocui.ModNone,
+			Handler:     gui.handleContainerRename,
+			Description: gui.Tr.Rename,
+		},
+		{
+			ViewName:    "containers",
 			Key:         'a',
 			Modifier:    gocui.ModNone,
 			Handler:     gui.handleContainerAttach,
@@ -304,6 +311,14 @@ func (gui *Gui) GetInitialKeybindings() []*Binding {
 			Handler:     gui.handleServiceStart,
 			Description: gui.Tr.Start,
 		},
+		// TODO: Review how to rename containers in the Services panel
+		// {
+		// 	ViewName:    "services",
+		// 	Key:         'R', // This Key is in conflict with "handleServiceRestartMenu"
+		// 	Modifier:    gocui.ModNone,
+		// 	Handler:     gui.handleContainerRename,
+		// 	Description: gui.Tr.Rename,
+		// },
 		{
 			ViewName:    "services",
 			Key:         'a',

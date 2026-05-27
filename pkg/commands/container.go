@@ -87,6 +87,13 @@ func (c *Container) Restart() error {
 	return c.Client.ContainerRestart(context.Background(), c.ID, container.StopOptions{})
 }
 
+// Rename renames the container to the new name
+func (c *Container) Rename(newName string) error {
+	c.Log.Warn(fmt.Sprintf("Renaming container %s to %s", c.Name, newName))
+
+	return c.Client.ContainerRename(context.Background(), c.ID, newName)
+}
+
 // Attach attaches the container
 func (c *Container) Attach() (*exec.Cmd, error) {
 	if !c.DetailsLoaded() {

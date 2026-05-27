@@ -416,6 +416,33 @@ func (gui *Gui) handleContainerRestart(g *gocui.Gui, v *gocui.View) error {
 	})
 }
 
+func (gui *Gui) handleContainerRename(g *gocui.Gui, v *gocui.View) error {
+	// TODO: Review how to rename containers in the Services panel
+	// ctrServices, err := gui.Panels.Services.GetSelectedItem()
+
+	ctr, err := gui.Panels.Containers.GetSelectedItem()
+	if err != nil {
+		return nil
+	}
+
+	ctrName := ctr.Name
+
+	return gui.createPromptPanel(gui.Tr.RenameCommandTitle, func(g *gocui.Gui, v *gocui.View) error {
+		newName := gui.trimmedContent(v)
+		if newName == "" {
+			return nil
+		}
+
+		return gui.WithWaitingStatus(gui.Tr.RenamingStatus, func() error {
+			if err := ctr.Rename(newName); err != nil {
+				return gui.createErrorPanel(err.Error())
+			}
+
+			return nil
+		})
+	}, ctrName)
+}
+
 func (gui *Gui) handleContainerAttach(g *gocui.Gui, v *gocui.View) error {
 	ctr, err := gui.Panels.Containers.GetSelectedItem()
 	if err != nil {

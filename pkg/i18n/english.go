@@ -48,6 +48,7 @@ type TranslationSet struct {
 	UppingServiceStatus         string
 	PausingStatus               string
 	RemovingStatus              string
+	RenamingStatus              string
 	DowningStatus               string
 	RunningCustomCommandStatus  string
 	RunningBulkCommandStatus    string
@@ -56,6 +57,7 @@ type TranslationSet struct {
 	Stop                        string
 	Pause                       string
 	Restart                     string
+	Rename                      string
 	Down                        string
 	DownWithVolumes             string
 	Start                       string
@@ -104,6 +106,7 @@ type TranslationSet struct {
 	RemoveAllContainers         string
 	ViewRestartOptions          string
 	ExecShell                   string
+	RenameCommandTitle          string
 	RunCustomCommand            string
 	ViewBulkCommands            string
 	FilterList                  string
@@ -143,6 +146,7 @@ func englishSet() TranslationSet {
 	return TranslationSet{
 		PruningStatus:              "pruning",
 		RemovingStatus:             "removing",
+		RenamingStatus:             "renaming",
 		RestartingStatus:           "restarting",
 		StartingStatus:             "starting",
 		StoppingStatus:             "stopping",
@@ -188,6 +192,7 @@ func englishSet() TranslationSet {
 		Stop:                        "stop",
 		Pause:                       "pause",
 		Restart:                     "restart",
+		Rename:                      "rename",
 		Down:                        "down project",
 		DownWithVolumes:             "down project with volumes",
 		Start:                       "start",
@@ -213,6 +218,7 @@ func englishSet() TranslationSet {
 		RemoveAllContainers:         "remove all containers (forced)",
 		ViewRestartOptions:          "view restart options",
 		ExecShell:                   "exec shell",
+		RenameCommandTitle:          "Container New name:",
 		RunCustomCommand:            "run predefined custom command",
 		ViewBulkCommands:            "bulk commands",
 		FilterList:                  "filter list",
