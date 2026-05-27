@@ -69,6 +69,22 @@ type TranslationSet struct {
 	ViewLogs                    string
 	UpProject                   string
 	DownProject                 string
+
+	// Profile-related strings for docker-compose profile pseudo-projects in
+	// the project panel. Selecting a profile and triggering Up/Down/Restart
+	// shells out with `--profile <name>` instead of bare project commands.
+	RestartProject          string
+	ProfileLabel            string
+	UpProfile               string
+	DownProfile             string
+	RestartProfile          string
+	ConfirmUpProfile        string
+	ConfirmDownProfile      string
+	ConfirmRestartProfile   string
+	UppingProfileStatus     string
+	DowningProfileStatus    string
+	RestartingProfileStatus string
+
 	ServicesTitle               string
 	ContainersTitle             string
 	StandaloneContainersTitle   string
@@ -225,6 +241,15 @@ func englishSet() TranslationSet {
 		OpenInBrowser:               "open in browser (first port is http)",
 		SortContainersByState:       "sort containers by state",
 
+		RestartProject:          "restart project",
+		ProfileLabel:            "profile",
+		UpProfile:               "up profile",
+		DownProfile:             "down profile",
+		RestartProfile:          "restart profile",
+		UppingProfileStatus:     "upping profile",
+		DowningProfileStatus:    "downing profile",
+		RestartingProfileStatus: "restarting profile",
+
 		GlobalTitle:                 "Global",
 		MainTitle:                   "Main",
 		ProjectTitle:                "Project",
@@ -260,6 +285,9 @@ func englishSet() TranslationSet {
 
 		ConfirmQuit:                 "Are you sure you want to quit?",
 		ConfirmUpProject:            "Are you sure you want to 'up' your docker compose project?",
+		ConfirmUpProfile:            "Are you sure you want to 'up' this docker compose profile?",
+		ConfirmDownProfile:          "Are you sure you want to 'down' this docker compose profile?",
+		ConfirmRestartProfile:       "Are you sure you want to 'restart' this docker compose profile?",
 		MustForceToRemoveContainer:  "You cannot remove a running container unless you force it. Do you want to force it?",
 		NotEnoughSpace:              "Not enough space to render panels",
 		ConfirmPruneImages:          "Are you sure you want to prune all unused images?",
